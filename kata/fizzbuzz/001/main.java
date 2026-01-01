@@ -1,11 +1,15 @@
+import static java.lang.System.err;
+import static java.lang.System.out;
+import static java.lang.System.exit;
+
 record Mapping(int denominator, String text) {}
 
 void main(String[] args) {
     var usage = "Usage: program <number>";
 
     if (args.length != 1) {
-        System.err.println(usage);
-        System.exit(1);
+        err.println(usage);
+        exit(1);
     }
 
     int input = 1;
@@ -13,8 +17,8 @@ void main(String[] args) {
     try {
         input = Integer.parseInt(args[0]);
     } catch (Throwable t) {
-        System.err.println(usage);
-        System.err.println("Error during String to int convertion: " + t.getMessage());
+        err.println(usage);
+        err.println("Error during String to int convertion: " + t.getMessage());
         t.printStackTrace();
     }
 
@@ -38,5 +42,5 @@ void main(String[] args) {
         }
     }
 
-    System.out.println(builder.toString());
+    out.println(builder.toString());
 }
